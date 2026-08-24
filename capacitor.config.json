@@ -1,7 +1,7 @@
 ﻿{
   "appId": "com.qeytil.bubblepop",
   "appName": "Bubble Pop Frenzy",
-  "webDir": ".",
+  "webDir": "www",
   "server": {
     "androidScheme": "https"
   },

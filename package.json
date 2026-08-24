@@ -2,14 +2,18 @@
   "name": "bubble-pop-frenzy",
   "version": "1.0.0",
   "description": "A colorful, addictive bubble shooter puzzle game - Developed by Qeytil",
-  "main": "index.html",
+  "main": "www/index.html",
   "scripts": {
-    "start": "npx serve .",
-    "build": "echo 'Static site - no build needed'",
-    "cap:init": "npx cap init 'Bubble Pop Frenzy' 'com.qeytil.bubblepop' --web-dir .",
+    "start": "npx serve www",
     "cap:add": "npx cap add android",
-    "cap:sync": "npx cap sync",
-    "cap:open": "npx cap open android"
+    "cap:sync": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
   },
   "keywords": ["bubble", "shooter", "puzzle", "game", "offline"],
   "author": "Qeytil",
