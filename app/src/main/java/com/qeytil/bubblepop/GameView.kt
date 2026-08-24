@@ -282,6 +282,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
 
     fun Float.dp(): Float = this * resources.displayMetrics.density
+    fun Int.dp(): Float = this * resources.displayMetrics.density
 
     fun initPaints() {
         pBg.shader = LinearGradient(0f, 0f, 0f, H,
@@ -932,7 +933,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     fun drawCannon(c: Canvas) {
         val th = themeManager.current
         c.save()
-        c.rotate((aimAngle + Math.PI / 2).toDegrees(), cannonX, cannonY)
+        c.rotate(Math.toDegrees((aimAngle + Math.PI / 2).toDouble()).toFloat(), cannonX, cannonY)
         cRound(RectF(cannonX - 11.dp(), cannonY - R - 12.dp(), cannonX + 11.dp(), cannonY + R + 14.dp()), Paint().apply { color = th.wall })
         c.restore()
 
@@ -1245,7 +1246,5 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
 
     fun th_textColor(): Int = themeManager.current.text
-
-    fun Float.toDegrees(): Float = Math.toDegrees(this.toDouble()).toFloat()
 
 }
