@@ -1,50 +1,60 @@
 ﻿# Bubble Pop Frenzy
 
-A colorful, addictive bubble shooter puzzle game — fully offline.
+A colorful, addictive bubble shooter puzzle game for Android.
+**100% native Kotlin** — zero third-party dependencies, fully offline.
 
 ## Features
 
-- Classic bubble shooter gameplay (aim + shoot + match 3+)
-- Progressive difficulty across levels
-- Daily Challenge mode (same puzzle for everyone each day)
-- 5 unlockable themes: Classic, Neon, Ocean, Sunset, Galaxy
-- Procedurally generated sound effects (no audio files)
-- Combo scoring system with particle effects
-- Touch + mouse support
-- Fully offline — all progress stored locally
+- Classic bubble shooter gameplay (aim, bounce, match 3+, pop)
+- Live trajectory preview with wall-bounce prediction and landing ghost
+- Floating cluster physics — cut bubbles loose and they rain down for bonus points
+- Descending-row pressure mechanic with shot pips HUD
+- Combo system (up to x5 multiplier) with screen shake + particle bursts
+- 50 deterministic levels across 5 board shapes
+- Daily Challenge — same seeded puzzle for everyone each day
+- 5 unlockable themes: Classic, Neon, Ocean, Sunset, Galaxy (score milestones)
+- 3-star ratings per level, full local stats
+- Procedurally synthesized sound effects (no audio assets) via SoundPool
+- All progress in SharedPreferences — completely offline
 
-## Play in Browser
+## Get the APK
 
-Open `www/index.html` in any browser.
+Built automatically in GitHub Actions cloud:
 
-## Android APK — Built Automatically in GitHub Cloud
+1. [Actions tab](../../actions) -> latest **Build Android APK** run -> download artifact; or
+2. Directly from the [Latest Build release](../../releases/tag/latest).
 
-No Android Studio needed. Every push to `main` triggers a GitHub Actions
-workflow that compiles a debug APK in the cloud.
+Install `BubblePopFrenzy-debug.apk` (enable "Install from unknown sources").
 
-**Get the APK:**
-
-1. Go to the [Actions tab](../../actions) and open the latest **Build Android APK** run,
-   then download the `bubble-pop-frenzy-debug-apk` artifact; or
-2. Grab it directly from the [Latest Build release](../../releases/tag/latest).
-
-Install `app-debug.apk` on your Android device (enable "Install from unknown sources").
-
-### Manual local build (optional)
+## Build from source
 
 ```bash
-npm install
-npx cap add android   # first time only
-npx cap sync android  # after web changes
-cd android && ./gradlew assembleDebug
+gradle assembleDebug        # APK at app/build/outputs/apk/debug/
 ```
 
-## Project Structure
+Requirements: JDK 17, Android SDK 34. No wrapper needed — any Gradle 8.x works.
+
+## Tech
+
+| | |
+|---|---|
+| Language | Kotlin |
+| UI | SurfaceView custom game loop + Canvas rendering |
+| Audio | Runtime WAV synthesis -> SoundPool |
+| Storage | SharedPreferences |
+| Dependencies | None |
+
+## Project layout
 
 ```
-www/            game source (HTML/CSS/JS)
-.github/workflows/build-apk.yml   cloud APK build pipeline
-capacitor.config.json             Capacitor config (appId com.qeytil.bubblepop)
+app/src/main/java/com/qeytil/bubblepop/
+  MainActivity.kt   fullscreen immersive host
+  GameView.kt       engine: loop, hex-grid physics, input, canvas UI
+  Levels.kt         seeded level generator (5 shapes)
+  Themes.kt         theme catalog + unlock manager
+  Sound.kt          procedural SFX synth
+  Store.kt          persistence
+  Entities.kt       game data classes
 ```
 
 ## Developed by Qeytil
