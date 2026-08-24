@@ -854,7 +854,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             cRound(rect, dim)
         }
         pBtnText.textAlign = Paint.Align.CENTER
-        c.drawText(label, rect.centerX(), rect.centerY() - (pBtnText.descent() + pBtnText.ascent()) / 2, pBtnText)
+        currentCanvas?.drawText(label, rect.centerX(), rect.centerY() - (pBtnText.descent() + pBtnText.ascent()) / 2, pBtnText)
         return rect
     }
 

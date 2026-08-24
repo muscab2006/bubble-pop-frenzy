@@ -77,7 +77,7 @@ class Store(ctx: Context) {
 
     var activeTheme: String
         get() = p.getString("activeTheme", "classic") ?: "classic"
-        set(v) = put("activeTheme" , v)
+        set(v) { p.edit().putString("activeTheme", v).apply() }
 
     var dailyHigh: Int
         get() = get("dailyHigh", 0)
@@ -85,7 +85,7 @@ class Store(ctx: Context) {
 
     var lastDailyDate: String
         get() = p.getString("dailyDate", "") ?: ""
-        set(v) = put("dailyDate", v)
+        set(v) { p.edit().putString("dailyDate", v).apply() }
 
     var gamesPlayed: Int
         get() = get("gamesPlayed", 0)

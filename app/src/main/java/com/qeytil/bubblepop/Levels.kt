@@ -9,7 +9,7 @@ fun mulberry32(seed: Long): () -> Double {
         a += 0x6D2B79F5L
         var t = a
         t = (t xor (t ushr 15)) * (t or 1L)
-        t ^= t + ((t xor (t ushr 7)) * (t or 61L))
+        t = t xor ((t xor (t ushr 7)) * (t or 61L))
         (((t xor (t ushr 14)) and 0xFFFFFFFFL).toDouble() / 4294967296.0)
     }
 }
