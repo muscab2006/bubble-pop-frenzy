@@ -331,7 +331,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             val dr = maxOf(0, (num shr 16 and 0xFF) - 45)
             val dg = maxOf(0, (num shr 8 and 0xFF) - 45)
             val db = maxOf(0, (num and 0xFF) - 45)
-            val g = RadialGradient(cx - R * 0.35f, cy - R * 0.4f, R * 0.1f, cx, cy,
+            val g = RadialGradient(cx - R * 0.35f, cy - R * 0.4f, R,
                 intArrayOf(Color.rgb(lr, lg, lb), num, Color.rgb(dr, dg, db)),
                 floatArrayOf(0f, 0.65f, 1f), Shader.TileMode.CLAMP)
             val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { shader = g }
@@ -682,7 +682,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         commitScores(true)
 
         if (mode == "level") {
-            store.setLevel(levelNum + 1)
+            store.level = levelNum + 1
             store.setStars(levelNum, stars)
         }
     }
@@ -701,7 +701,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             store.lastDailyDate = todayString()
             store.dailyHigh = score
         } else if (!won) {
-            store.setLevel(levelNum)
+            store.level = levelNum
         }
     }
 
@@ -1247,3 +1247,5 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     fun th_textColor(): Int = themeManager.current.text
 
     fun Float.toDegrees(): Float = Math.toDegrees(this.toDouble()).toFloat()
+
+}
