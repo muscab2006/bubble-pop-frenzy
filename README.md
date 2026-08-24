@@ -1,4 +1,4 @@
-﻿# Bubble Pop Frenzy
+# Bubble Pop Frenzy
 
 A colorful, addictive bubble shooter puzzle game for Android.
 **100% native Kotlin** — zero third-party dependencies, fully offline.

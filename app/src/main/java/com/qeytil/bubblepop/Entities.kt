@@ -1,4 +1,4 @@
-﻿package com.qeytil.bubblepop
+package com.qeytil.bubblepop
 
 class Bubble(var colorIdx: Int) {
     var x = 0f

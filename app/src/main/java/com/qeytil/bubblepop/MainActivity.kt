@@ -1,4 +1,4 @@
-﻿package com.qeytil.bubblepop
+package com.qeytil.bubblepop
 
 import android.app.Activity
 import android.os.Build

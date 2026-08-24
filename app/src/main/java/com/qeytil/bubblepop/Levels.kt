@@ -1,4 +1,4 @@
-﻿package com.qeytil.bubblepop
+package com.qeytil.bubblepop
 
 import kotlin.math.abs
 import kotlin.math.floor
